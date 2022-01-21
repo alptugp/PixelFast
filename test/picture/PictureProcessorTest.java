@@ -48,6 +48,20 @@ public class PictureProcessorTest {
   }
 
   @Test
+  public void rotate180Green() throws IOException {
+    Assert.assertEquals(
+            new Picture("images/green64x64R180doc.png"),
+            TestSuiteHelper.runMain(tmpFolder, "rotate", "180", "images/green64x64doc.png"));
+  }
+
+  @Test
+  public void rotate270Green() throws IOException {
+    Assert.assertEquals(
+            new Picture("images/green64x64R270doc.png"),
+            TestSuiteHelper.runMain(tmpFolder, "rotate", "270", "images/green64x64doc.png"));
+  }
+
+  @Test
   public void rotate90BlueRect() throws IOException {
     Assert.assertEquals(
         new Picture("images/blueR9064x32doc.png"),
@@ -90,6 +104,13 @@ public class PictureProcessorTest {
   }
 
   @Test
+  public void flipHGreen() throws IOException {
+    Assert.assertEquals(
+            new Picture("images/green64x64FHdoc.png"),
+            TestSuiteHelper.runMain(tmpFolder, "flip", "H", "images/green64x64doc.png"));
+  }
+
+  @Test
   public void blurBWPatterns() throws IOException {
     Assert.assertEquals(
         new Picture("images/bwpatternsblur64x64.png"),
@@ -110,7 +131,7 @@ public class PictureProcessorTest {
         TestSuiteHelper.runMain(
             tmpFolder, "blend", "images/bwpatterns64x64.png", "images/rainbow64x64doc.png"));
   }
-
+  
   @Test
   public void blendRainbowSunset() throws IOException {
     Assert.assertEquals(

@@ -301,5 +301,41 @@ public class Picture {
     }
     return newPic;
   }
-}
 
+  public static Picture mosaic(List<Picture> pictures, int tileSize) {
+    int smallestWidth = pictures.stream().mapToInt(Picture::getWidth).min().orElse(0);
+    int smallestHeight = pictures.stream().mapToInt(Picture::getHeight).min().orElse(0);
+    int i = 0;
+    while (smallestWidth % tileSize != 0) {
+      smallestWidth -= 1;
+    }
+    while (smallestHeight % tileSize != 0) {
+      smallestHeight -= 1;
+    }
+    Picture newPic = new Picture(smallestWidth, smallestHeight);
+    List<Integer> replicatedList = replicator(pictures.size(), (smallestWidth - 1) * (smallestHeight - 1));
+    for (int ys = 0; ys < smallestHeight; ys += tileSize) {
+      for (int xs = 0; xs < smallestWidth; xs += tileSize) {
+        if (i < (smallestWidth - 1) * (smallestHeight - 1)) {
+          for (int y = ys; y < ys + tileSize; y++) {
+            for (int x = xs; x < xs + tileSize; x++) {
+              newPic.setPixel(x, y, pictures.get(replicatedList.get(i)).getPixel(x, y));
+            }
+          }
+      }
+        i += 1;
+    }
+  }
+    return newPic;
+  }
+
+  private static List<Integer> replicator(int listSize, int sWidthMultipliedBysHeight) {
+    List<Integer> lst = new ArrayList<>();
+    for (int i = 0; i < sWidthMultipliedBysHeight; i++) {
+      for (int z = 0; z < listSize; z++) {
+        lst.add(z);
+      }
+    }
+    return lst;
+  }
+}

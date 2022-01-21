@@ -131,7 +131,7 @@ public class PictureProcessorTest {
         TestSuiteHelper.runMain(
             tmpFolder, "blend", "images/bwpatterns64x64.png", "images/rainbow64x64doc.png"));
   }
-  
+
   @Test
   public void blendRainbowSunset() throws IOException {
     Assert.assertEquals(

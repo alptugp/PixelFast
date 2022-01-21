@@ -40,5 +40,14 @@ public class PictureProcessor {
       Picture flipped = original.flip(args[1]);
       flipped.saveAs(args[3]);
     }
+    else if (args[0].equals("mosaic")) {
+      List<Picture> lst = new ArrayList<>();
+      for (int i = 2; i < args.length - 1; i++) {
+        Picture picture = new Picture(args[i]);
+        lst.add(picture);
+      }
+      Picture mosaic = Picture.mosaic(lst, Integer.valueOf(args[1]));
+      mosaic.saveAs(args[args.length - 1]);
+    }
   }
 }

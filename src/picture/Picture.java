@@ -228,6 +228,15 @@ public class Picture {
     return newPic;
   }
 
+  public void makeDark(int magnitude) {
+    for (int y = 0; y < getHeight(); y++) {
+      for (int x = 0; x < getWidth(); x++) {
+        Color rgb = getPixel(x, y);
+        setPixel(x, y, new Color(rgb.getRed() / magnitude, rgb.getGreen() / magnitude, rgb.getBlue() / magnitude));
+      }
+    }
+  }
+
   public Picture flip(String directionOfReflection) {
     Picture newPic = new Picture(getWidth(), getHeight());
     if (directionOfReflection.equals("V")) {
@@ -333,8 +342,8 @@ public class Picture {
     List<Integer> lst = new ArrayList<>();
     for (int i = 0; i < sWidthMultipliedBysHeight; i++) {
       for (int z = 0; z < listSize; z++) {
-        lst.add(z);
-      }
+          lst.add(z);
+        }
     }
     return lst;
   }

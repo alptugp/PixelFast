@@ -35,6 +35,13 @@ public class PictureProcessor {
       Picture rotated = original.rotate(Integer.valueOf(args[1]));
       rotated.saveAs(args[3]);
     }
+
+    else if (args[0].equals("makeDark")) {
+      Picture original = new Picture(args[2]);
+      original.makeDark(Integer.valueOf(args[1]));
+      original.saveAs(args[3]);
+    }
+
     else if (args[0].equals("flip")) {
       Picture original = new Picture(args[2]);
       Picture flipped = original.flip(args[1]);

@@ -11,11 +11,13 @@ public class PictureProcessor {
       inverted.invert();
       inverted.saveAs(args[2]);
     }
+
     else if (args[0].equals("grayscale")) {
       Picture original = new Picture(args[1]);
       original.grayScale();
       original.saveAs(args[2]);
     }
+
     else if (args[0].equals("blend")) {
       List<Picture> lst = new ArrayList<>();
       for (int i = 1; i < args.length - 1; i++) {
@@ -25,11 +27,13 @@ public class PictureProcessor {
       Picture blended = Picture.blend(lst);
       blended.saveAs(args[args.length - 1]);
     }
+
     else if (args[0].equals("blur")) {
       Picture original = new Picture(args[1]);
       Picture blurred = original.blur();
       blurred.saveAs(args[2]);
     }
+
     else if (args[0].equals("rotate")) {
       Picture original = new Picture(args[2]);
       Picture rotated = original.rotate(Integer.valueOf(args[1]));
@@ -47,6 +51,7 @@ public class PictureProcessor {
       Picture flipped = original.flip(args[1]);
       flipped.saveAs(args[3]);
     }
+
     else if (args[0].equals("mosaic")) {
       List<Picture> lst = new ArrayList<>();
       for (int i = 2; i < args.length - 1; i++) {
@@ -55,6 +60,12 @@ public class PictureProcessor {
       }
       Picture mosaic = Picture.mosaic(lst, Integer.valueOf(args[1]));
       mosaic.saveAs(args[args.length - 1]);
+    }
+
+    else if (args[0].equals("andyWarholStyle")) {
+      Picture original = new Picture(args[1]);
+      original.andyWarholStyle();
+      original.saveAs(args[2]);
     }
   }
 }

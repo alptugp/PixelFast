@@ -347,4 +347,19 @@ public class Picture {
     }
     return lst;
   }
+
+  public Picture andyWarholStyle() {
+    Picture newPic = new Picture (getWidth() * 2, getHeight() * 2)
+    for (int yy = 0; yy < getHeight() * 2; yy += getHeight()) {
+      for (int xx = 0; xx < getWidth() * 2; xx += getWidth()) {
+        for (int x = 0; x < getWidth(); x++) {
+          for (int y = 0; y < getHeight(); y++) {
+            pixel = getPixel(x, y)
+          }
+        }
+      }
+    }
+    getHeight()
+    getSize()
+  }
 }

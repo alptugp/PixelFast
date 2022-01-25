@@ -215,9 +215,9 @@ public class Picture {
   }
 
   private Picture helperRotate() {
-    Picture newPic = new Picture (getHeight(), getWidth());
+    Picture newPic = new Picture(getHeight(), getWidth());
     for (int y = 0; y < getHeight(); y++) {
-      List <Color> lst = new ArrayList<>();
+      List<Color> lst = new ArrayList<>();
       for (int x = 0; x < getWidth(); x++) {
         lst.add(getPixel(x, y));
       }
@@ -284,7 +284,7 @@ public class Picture {
   }
 
   public Picture blur() {
-    Picture newPic = new Picture (getWidth(), getHeight());
+    Picture newPic = new Picture(getWidth(), getHeight());
     for (int y = 0; y < getHeight(); y++) {
       for (int x = 0; x < getWidth(); x++) {
         int ir = 0;
@@ -302,8 +302,7 @@ public class Picture {
           int bAvg = ib / 9;
           int gAvg = ig / 9;
           newPic.setPixel(x, y, new Color(rAvg, gAvg, bAvg));
-        }
-        else {
+        } else {
           newPic.setPixel(x, y, getPixel(x, y));
         }
       }
@@ -331,10 +330,10 @@ public class Picture {
               newPic.setPixel(x, y, pictures.get(replicatedList.get(i)).getPixel(x, y));
             }
           }
-      }
+        }
         i += 1;
+      }
     }
-  }
     return newPic;
   }
 
@@ -342,26 +341,64 @@ public class Picture {
     List<Integer> lst = new ArrayList<>();
     for (int i = 0; i < sWidthMultipliedBysHeight; i++) {
       for (int z = 0; z < listSize; z++) {
-          lst.add(z);
-        }
+        lst.add(z);
+      }
     }
     return lst;
   }
 
   public Picture andyWarholStyle() {
-    Picture newPic = new Picture (getWidth() * 2, getHeight() * 2);
+    Picture newPic = new Picture(getWidth() * 2, getHeight() * 2);
     int i = 2;
     for (int yy = 0; yy < (getHeight() * 2) - 2; yy += getHeight()) {
       for (int xx = 0; xx < (getWidth() * 2) - 2; xx += getWidth()) {
         for (int x = 0; x < getWidth(); x++) {
           for (int y = 0; y < getHeight(); y++) {
             Color rgb = getPixel(x, y);
-            newPic.setPixel(xx + x, yy + y, new Color (rgb.getRed() / i, rgb.getGreen() * (i * 2), rgb.getBlue() / (i * 2)));
+            newPic.setPixel(xx + x, yy + y, new Color(rgb.getRed() / i, rgb.getGreen() * (i * 2), rgb.getBlue() / (i * 2)));
           }
         }
         i += 1;
       }
     }
     return newPic;
+  }
+
+  public kMeans() {
+  }
+
+  public BufferedImage evaluate(BufferedImage givenImage, int k, int m) {
+    long beginning = System.currentTimeMillis();
+    int width = givenImage.getWidth();
+    int height = givenImage.getHeight();
+
+    clusters = generateClusters(givenImage, k);
+
+    int[] lt = new int[width * height];
+    Arrays.fill(lt, -1);
+
+    boolean changedClusterPixel = true;
+    int numberOfLoops = 0;
+
+    while (changedClusterPixel) {
+      changedClusterPixel = false;
+      numberOfLoops++;
+      for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+          int rgb = image.getRGB(x, y);
+          Cluster cluster = minimalCluster(rgb);
+
+        }
+      }
+    }
+
+    public minimalCluster( int rgb){
+      Cluster cluster = null;
+      int minimum = Integer.MAX_VALUE;
+
+      for (int i = 0; i < clusters.size(); i++) {
+        int seperation = clusters[i].
+      }
+    }
   }
 }

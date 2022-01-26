@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/javapictureprocessing_aap221.iml" filepath="$PROJECT_DIR$/javapictureprocessing_aap221.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pixelfast.iml" filepath="$PROJECT_DIR$/pixelfast.iml" />
     </modules>
   </component>
 </project>
